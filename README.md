@@ -4,7 +4,9 @@
 
 ##### Getting Pystan
 To run the hierarchical_model.py file you need to install pystan.
-Run `pip install pystan` from the command line to get pystan. (*Note:* Run `sudo xcodebuild -license accept` in the command line **first** to make sure you accepted the *xcode license agreement*, otherwise your installation of pystan will not be functional)
+- Run `sudo xcodebuild -license accept` in the command line **first** to make sure you accepted the *xcode license agreement*, otherwise pystan doesn't install properly.
+-  Run `pip install pystan` from the command line to get pystan.
+-  If you have *anaconda* run `conda install -c conda-forge pystan` 
 
 ##### Running the files
 
