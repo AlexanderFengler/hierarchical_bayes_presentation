@@ -22,4 +22,4 @@ out = hierarchical_model.main('hierarchical_normal_data.txt',
                               n_chains = 10, 
                               n_warmup = 0)
 ``` 
-You will get an **output** folder with 10 **csv** files, that contains 5000-`n_warmup` samples from every chain for every parameter specified in the model.
+You will get an **output** folder with 10 **csv** files, that contains `5000-n_warmup` samples from every chain for every parameter specified in the model.
