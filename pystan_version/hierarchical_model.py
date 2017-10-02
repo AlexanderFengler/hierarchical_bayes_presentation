@@ -53,8 +53,8 @@ def initialize_model(model_code):
     sm = StanModel_cache(model_code = model_code)
     return sm
 
-def run_model(stan_model, data, n_iter, n_chains):
-    fit = stan_model.sampling(data = data, iter = n_iter, chains = n_chains)
+def run_model(stan_model, data, n_iter, n_chains, n_warmup):
+    fit = stan_model.sampling(data = data, iter = n_iter, chains = n_chains, warmup = n_warmup)
     return fit
 
 def write_samples_to_csv(fit_object):
@@ -79,11 +79,11 @@ def write_samples_to_csv(fit_object):
             np.savetxt(f, fitdict[:,i,:-1], delimiter=",", fmt = '%1.8f')
     return
 
-def main(data_file, model_file, n_iter, n_chains):
+def main(data_file, model_file, n_iter, n_chains, n_warmup):
     # full run of the model with output in csv file named chain_[*].csv
     data = read_in_data(data_file)
     model = read_in_model_code(model_file)
     sm = initialize_model(model)
-    fit = run_model(sm, data, n_iter, n_chains)
+    fit = run_model(sm, data, n_iter, n_chains, n_warmup)
     write_samples_to_csv(fit)
     return fit
