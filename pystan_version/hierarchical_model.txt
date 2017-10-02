@@ -1,0 +1,38 @@
+data {
+    int J[1]; // number of groups
+    int N[J[1]]; // observations by group
+    real A[N[1]]; // values group A
+    real B[N[2]]; // values group B
+    real C[N[3]]; // values group C
+    real D[N[4]]; // values group D
+}
+
+parameters {
+    real mu; // population mean
+    real<lower=0> tau; // population sd
+    real<lower=0> sigma; // group sd
+    real theta[J[1]]; // school-level errors
+}
+
+transformed parameters {
+    real log_tau = log(tau);
+    real log_sigma = log(sigma);
+}
+
+model {
+    target += log(tau);
+    for (j in 1:J[1])
+      theta[j] ~ normal(mu, tau);
+    // increment group A
+    for (i in 1:N[1])
+      A[i] ~ normal(theta[1], sigma);
+    // increment group B
+    for (i in 1:N[2])
+      B[i] ~ normal(theta[2], sigma);
+    // increment group C
+    for (i in 1:N[3])
+      C[i] ~ normal(theta[3], sigma);
+    // increment group D
+    for (i in 1:N[4])
+      D[i] ~ normal(theta[4], sigma);
+}
