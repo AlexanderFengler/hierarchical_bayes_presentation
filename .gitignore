@@ -1,2 +1,5 @@
 pystan_version/output/**
+pystan_version/__pycache__
+pystan_version/cached-model*
 results/**
+__pycache__
