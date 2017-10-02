@@ -9,8 +9,11 @@ Run `pip install pystan` from the command line to get pystan. (*Note:* Run `sudo
 ##### Running the files
 
 To perform a run of the model and get samples from the chain in csv files, do the following.
+
 1. Start python from the `pystan_version` folder. 
 2. Use the following python commands
 ```python
 import hierarchical_model
+out = hierarchical_model.main('hierarchical_normal_data.txt', 'hierarchical_model.txt', 5000, 10)
 ``` 
+You will get a folder with 10 **csv** files, that contains 2500 samples from every chain for every parameter specified in the model.
