@@ -19,7 +19,6 @@ import hierarchical_model
 out = hierarchical_model.main('hierarchical_normal_data.txt', 
                               'hierarchical_model.txt', 
                               n_samples = 5000, 
-                              n_chains = 10, 
-                              n_warmup = 0)
+                              n_chains = 10)
 ``` 
-You will get an **output** folder with `n_chains` **csv** files, that contains `n_samples-n_warmup` samples from every chain for every parameter specified in the model.
+You will get an **output** folder with `n_chains` **csv** files, that contains `n_samples // 2` samples from every chain for every parameter specified in the model.
