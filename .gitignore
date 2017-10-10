@@ -1,5 +1,7 @@
-pystan_version/output/**
-pystan_version/__pycache__
-pystan_version/cached-model*
-results/**
+results_stan/**
+results_gibbs/**
 __pycache__
+cached-model*
+.ipynb_checkpoints
+support_files/.ipynb_checkpoints
+timings_table.html

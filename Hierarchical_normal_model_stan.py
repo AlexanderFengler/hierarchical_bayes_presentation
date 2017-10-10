@@ -2,13 +2,14 @@ import os
 import pystan
 import pickle
 from hashlib import md5
+from timeit import default_timer as timer
 import numpy as np
 
 # to run the model run the main() function like shown below
 # run: test = main('hierarchical_normal_data.txt', 'hierarchical_model.txt', 5000, 10)
 # note: use help(test) to get information about the file you generated
 
-# relevant filenames: model_code --> hierarchical_model.txt, data --> hierarchical_normal_data.txt
+# relevant filenames: model_code --> support_files/hierarchical_normal_stan_model.txt, data --> support_files/hierarchical_normal_data.txt
 def read_in_data(file_name):
     data = dict()
     with open(file_name) as f:
@@ -59,7 +60,7 @@ def run_model(stan_model, data, n_iter, n_chains):
 
 def write_samples_to_csv(fit_object):
     # create path if it doesn't exist
-    mypath = 'output'
+    mypath = 'results_stan'
     if not os.path.isdir(mypath):
         os.makedirs(mypath)
 
@@ -75,16 +76,22 @@ def write_samples_to_csv(fit_object):
 
     # write samples to csv
     for i in range(np.shape(fitdict)[1]):
-        with open('output/chain_' + str(i + 1) + '.csv', 'wb') as f:
+        with open('output/stan_chain_' + str(i + 1) + '.csv', 'wb') as f:
             f.write(str.encode(my_str))
             np.savetxt(f, fitdict[:,i,:-1], delimiter=",", fmt = '%1.8f')
     return
 
-def main(data_file, model_file, n_iter, n_chains):
+def main(data_file = 'support_files/hierarchical_normal_data.txt', model_file = 'support_files/hierarchical_normal_stan_model.txt', n_iter = 1000, n_chains = 10, performance_test = False):
     # full run of the model with output in csv file named chain_[*].csv
     data = read_in_data(data_file)
     model = read_in_model_code(model_file)
     sm = initialize_model(model)
-    fit = run_model(sm, data, n_iter, n_chains)
-    write_samples_to_csv(fit)
-    return fit
+    if not performance_test:
+        fit = run_model(sm, data, n_iter, n_chains)
+        write_samples_to_csv(fit)
+        return fit
+    elif performance_test:
+        start = timer()
+        run_model(sm, data, n_iter, n_chains)
+        end = timer()
+        return (end - start)
