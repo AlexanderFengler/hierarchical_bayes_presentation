@@ -76,7 +76,7 @@ def write_samples_to_csv(fit_object):
 
     # write samples to csv
     for i in range(np.shape(fitdict)[1]):
-        with open('output/stan_chain_' + str(i + 1) + '.csv', 'wb') as f:
+        with open('results_stan/stan_chain_' + str(i + 1) + '.csv', 'wb') as f:
             f.write(str.encode(my_str))
             np.savetxt(f, fitdict[:,i,:-1], delimiter=",", fmt = '%1.8f')
     return

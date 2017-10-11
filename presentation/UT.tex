@@ -1,0 +1,58 @@
+\documentclass[xcolor=pdftex,dvipsnames,table]{UT}
+\usepackage{graphicx}
+%\usepackage[export]{adjustbox}
+%\usepackage[pdftex]{graphicx}
+\usepackage{texdraw,epsfig,bm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{forest}
+\usepackage{subfig}
+
+
+\background{1}	% choose background {1..5}
+\taal{EN} 	%EN or NL
+
+\title{Metropolis-Hastings \& Gibbs sampling for Bayesian inference}
+\subtitle{Catalano, Fasano, Fengler, Legramanti, Rebaudo}
+\date{\today} 
+
+\begin{document} 
+
+\maketitleslide
+
+%Choose a sideway banner, choose (side1, side2, side3, side4, side5)
+\setbeamertemplate{background}{\includegraphics[width=0.1\paperwidth,height=\paperheight]{img/side4}} 
+
+%includes the actual text of the files.
+
+{\small 
+	
+\section*{Overview}
+\begin{frame}{Overview}
+\tableofcontents
+\end{frame}
+	
+\include{tex/mixture} 
+
+\include{tex/gibbs} 
+
+\begin{frame}{}
+\vspace{.5in}
+\begin{center}
+	Thank you for your attention!
+\end{center}
+\end{frame}
+
+}
+
+\end{document} 
