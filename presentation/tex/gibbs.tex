@@ -141,7 +141,7 @@ $ \displaystyle \tau^2 \mid \theta, \mu, \sigma, y \sim Inv.\chi^2 \left( J-1,\h
 
 \end{frame}
 
-\begin{frame}{The Algorithm}
+\begin{frame}{The algorithm}
 \begin{enumerate}
 \item Fix initial values for $\hat{\theta_j}$ for $j \in \{1,\dots, J\}$. In our algorithm they are sampled from the initial data.
 \item Initialize $\hat{\mu}$ with the mean of $\hat{\theta}$.
@@ -163,7 +163,7 @@ $ \displaystyle \tau^2 \mid \theta, \mu, \sigma, y \sim Inv.\chi^2 \left( J-1,\h
 \end{figure}
 \end{frame}
 
-\begin{frame}{Runtime Comparison: Gibbs vs STAN}
+\begin{frame}{Runtime comparison: Gibbs vs STAN}
 \vspace*{-1cm}
 \begin{figure}
 	\centering
@@ -206,7 +206,7 @@ $ \displaystyle \tau^2 \mid \theta, \mu, \sigma, y \sim Inv.\chi^2 \left( J-1,\h
 		\includegraphics[width=\textwidth,height=7cm]{images/chains}
 \end{frame}
 
-\begin{frame}{Diagnostic indexes}
+\begin{frame}{Diagnostic indexes based on variance}
 	We can compare the estimated variance between chains ($B$) and within chains ($W$).
 	$$ B = \dfrac{n}{m-1} \sum_{j=1}^{m} (\bar{\theta}_{\cdot j} - \bar{\theta}_{\cdot \cdot})^2$$ 
 	$$W = \dfrac{1}{m} \sum_{j=1}^{m} s_j^2; \,\ s_j^2 = \dfrac{1}{n-1} \sum_{i=1}^{n} (\theta_{ij} - \bar{\theta}_{\cdot j})^2$$
